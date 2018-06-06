@@ -45,5 +45,7 @@ namespace TimeOff.Models
             base.OnModelCreating(modelBuilder);
             
         }
+
+        public System.Data.Entity.DbSet<TimeOff.Models.Ator> Ators { get; set; }
     }
 }

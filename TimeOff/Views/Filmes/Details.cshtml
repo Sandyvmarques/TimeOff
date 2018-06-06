@@ -1,0 +1,61 @@
+﻿@model TimeOff.Models.Filme
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Filme</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Realizadores.Nome)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Realizadores.Nome)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Titulo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Titulo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Sinopse)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Sinopse)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AnoLanc)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AnoLanc)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.LinkTrailer)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LinkTrailer)
+        </dd>
+        @foreach (var ator in Model.Atores)
+    {
+        @Html.DisplayFor(a => ator.Nome)<br/>
+}
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

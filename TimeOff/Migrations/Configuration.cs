@@ -28,7 +28,7 @@ namespace TimeOff.Migrations
                 new Utilizador {Id=6,UserName = "Mandreia", DataNasc = new DateTime(1997,8,22) , NomeCompleto = "Marta Andreia Campos Ribeiro", Email = "Mandreia@gmail.com", Sexo = "Femenino"},
             };
 
-            user.ForEach(dd => context.Utilizador.AddOrUpdate(d => d.UserName, dd));
+            user.ForEach(dd => context.Utilizador.AddOrUpdate(d => d.Id, dd));
             context.SaveChanges();
 
             //Realizador
@@ -40,7 +40,7 @@ namespace TimeOff.Migrations
                 new Realizador {Id=4, Nome = "Dennis Gansel", DataNasc = new DateTime(1973,10,4) , Biografia = "Dennis Gansel é um diretor de cinema, escritor e ator da Alemanha."},
                 new Realizador {Id=5, Nome = "Thea Sharrock", DataNasc = new DateTime(1976,1,1) , Biografia = "Thea Sharrock é uma diretora de cinema inglês. Em 2001, quando aos 24 anos ela se tornou diretora artística de Southwark Playhouse em Londres, ela foi a mais jovem diretora artística do teatro britânico." },
             };
-            directors.ForEach(dd => context.Realizador.AddOrUpdate(d => d.Nome, dd));
+            directors.ForEach(dd => context.Realizador.AddOrUpdate(d => d.Id, dd));
             context.SaveChanges();
 
             //filme
@@ -53,7 +53,7 @@ namespace TimeOff.Migrations
                 new Filme {Id=5,Titulo = "Me Before You", Sinopse = "Louisa “Lou” Clark vive numa pitoresca vila no campo, em Inglaterra. Sem um rumo definido na sua vida, a excêntrica e criativa jovem de 26 anos anda de trabalho em trabalho, para poder ajudar a sua unida família a pagar as contas. Porém, a sua habitual visão alegre da vida é posta à prova quando enfrenta o mais recente desafio da sua carreira. Ao aceitar um emprego numa mansão local, ela torna-se na assistente domiciliária e companhia de Will Traynor, um jovem e abastado banqueiro que fica numa cadeira de rodas após um acidente ocorrido há dois anos, cujo mundo muda bruscamente num piscar de olhos. Deixando de ser a alma aventureira de outros tempos, o agora cínico Will praticamente desistiu de tudo. Mas algo muda quando Lou decidir mostrar-lhe que a vida merece ser vivida. Embarcando os dois numa série de aventuras, tanto Lou como Will encontram mais do que esperavam e veem as suas vidas – e corações – mudarem de maneiras que nunca poderiam ter imaginado.", AnoLanc =2016, LinkTrailer="", RealizadorId = 5},
             };
 
-            film.ForEach(dd => context.Filme.AddOrUpdate(d => d.Titulo, dd));
+            film.ForEach(dd => context.Filme.AddOrUpdate(d => d.Id, dd));
             context.SaveChanges();
             //Categorias 
 
@@ -67,7 +67,7 @@ namespace TimeOff.Migrations
                 new Categorias {Id=6, Nome = "Ficção"},
             };
 
-            category.ForEach(dd => context.Categorias.AddOrUpdate(d => d.Nome, dd));
+            category.ForEach(dd => context.Categorias.AddOrUpdate(d => d.Id, dd));
             context.SaveChanges();
 
             //Comentários 
@@ -79,7 +79,7 @@ namespace TimeOff.Migrations
                 new Comentarios { Texto ="Criei uma prespetiva errada do filme", Data = new DateTime(2017,4,2), UtilizadorId=3, FilmeId =3},
                 new Comentarios { Texto ="Muito mau", Data = new DateTime(2016,10,1), UtilizadorId=4, FilmeId =4},
                 new Comentarios { Texto ="Razoável!", Data = new DateTime(2017,5,7), UtilizadorId=5, FilmeId =5},
-                new Comentarios { Texto ="Não gostei muito", Data = new DateTime(2017,4,2), UtilizadorId=6, FilmeId =6},
+                new Comentarios { Texto ="Não gostei muito", Data = new DateTime(2017,4,2), UtilizadorId=6, FilmeId =5},
             };
             comments.ForEach(dd => context.Comentarios.AddOrUpdate(d => d.Texto, dd));
             context.SaveChanges();
@@ -88,14 +88,27 @@ namespace TimeOff.Migrations
 
             var image = new List<Imagens>
             {
-                new Imagens { Id=1, Imagem ="", FilmeId =1},
-                new Imagens { Id=2, Imagem ="",  FilmeId =2},
-                new Imagens { Id=3, Imagem ="", FilmeId =3},
+                new Imagens { Id=1, Imagem ="mmmmmm", FilmeId =1},
+                new Imagens { Id=2, Imagem ="bbbbbb",  FilmeId =2},
+                new Imagens { Id=3, Imagem =" bn,m", FilmeId =3},
                 new Imagens { Id=4, Imagem ="", FilmeId =4},
                 new Imagens { Id=5, Imagem ="", FilmeId =5},
                 new Imagens { Id=6, Imagem ="",  FilmeId =6},
             };
-            comments.ForEach(dd => context.Comentarios.AddOrUpdate(d => d.Texto, dd));
+            comments.ForEach(dd => context.Comentarios.AddOrUpdate(d => d.Id, dd));
+            context.SaveChanges();
+
+
+            var atores = new List<Ator>
+            {
+                new Ator { Id=1, Nome="asdsa", Filmes=new List<Filme> { film[0], film[4] } },
+                new Ator { Id=2, Nome="a", Filmes=new List<Filme> { film[0], film[4]}},
+                new Ator { Id=3, Nome="s", Filmes=new List<Filme> {film[0], film[4] }},
+                new Ator { Id=4, Nome="d", Filmes=new List<Filme> {film[0], film[4] }},
+                new Ator { Id=5, Nome="w", Filmes=new List<Filme> {film[0], film[4] }},
+                new Ator { Id=6, Nome="a", Filmes=new List<Filme> { film[0], film[4]}},
+            };
+            atores.ForEach(dd => context.Ators.AddOrUpdate(d => d.Id, dd));
             context.SaveChanges();
         }
     }

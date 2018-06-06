@@ -192,6 +192,8 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\AtorsController.cs" />
+    <Compile Include="Controllers\FilmesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Global.asax.cs">
@@ -268,6 +270,16 @@
     <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
+    <Content Include="Views\Filmes\Create.cshtml" />
+    <Content Include="Views\Filmes\Delete.cshtml" />
+    <Content Include="Views\Filmes\Details.cshtml" />
+    <Content Include="Views\Filmes\Edit.cshtml" />
+    <Content Include="Views\Filmes\Index.cshtml" />
+    <Content Include="Views\Ators\Create.cshtml" />
+    <Content Include="Views\Ators\Delete.cshtml" />
+    <Content Include="Views\Ators\Details.cshtml" />
+    <Content Include="Views\Ators\Edit.cshtml" />
+    <Content Include="Views\Ators\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

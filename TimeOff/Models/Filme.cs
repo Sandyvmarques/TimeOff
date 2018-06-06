@@ -21,6 +21,7 @@ namespace TimeOff.Models
         public string Titulo { get; set; }
 
         [Required]
+        [DataType(DataType.Text)]
         public string Sinopse { get; set; }
 
         public int AnoLanc { get; set; }
@@ -28,6 +29,7 @@ namespace TimeOff.Models
         public string LinkTrailer { get; set; }
 
         [ForeignKey("Realizadores")]
+        [Display(Name = "Realizador")]
         public int RealizadorId { get; set; }
 
         public virtual Realizador Realizadores { get; set; }
@@ -37,5 +39,7 @@ namespace TimeOff.Models
         public virtual ICollection<Categorias> Categorias { get; set; }
 
         public virtual ICollection<Imagens> Imagens { get; set; }
+
+        public virtual ICollection<Ator> Atores { get; set; }
     }
 }
