@@ -18,10 +18,10 @@ namespace TimeOff.Models
         public int Id { get; set; }
 
         [Required]
-        public string NomeCompleto { get; set; }
+        public string UserName { get; set; }
 
         [Required]
-        public string UserName { get; set; }
+        public string NomeCompleto { get; set; }
 
         public DateTime DataNasc { get; set; }
 
@@ -30,6 +30,8 @@ namespace TimeOff.Models
 
         [Required]
         public string Sexo { get; set; }
+
+        public string ImagemUtilizador { get; set; }
         
         public virtual ICollection<Comentarios> Comentarios { get; set; }
     }

@@ -12,7 +12,7 @@
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.Realizadores.Nome)
+            @Html.DisplayNameFor(model => model.Realizadores.NomeRealizador)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.Titulo)
@@ -32,7 +32,7 @@
 @foreach (var item in Model) {
     <tr>
         <td>
-            @Html.DisplayFor(modelItem => item.Realizadores.Nome)
+            @Html.DisplayFor(modelItem => item.Realizadores.NomeRealizador)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.Titulo)
@@ -47,9 +47,15 @@
             @Html.DisplayFor(modelItem => item.LinkTrailer)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
-            @Html.ActionLink("Details", "Details", new { id=item.Id }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
+            <a href="~/imagens/@item.ImagensFilme" target="_blank">
+                <img src="~/imagens/@item.ImagensFilme" width="120" height="200" />
+            </a>
+        </td>
+        
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
+            @Html.ActionLink("Details", "Details", new { id = item.Id }) |
+            @Html.ActionLink("Delete", "Delete", new { id = item.Id })
         </td>
     </tr>
 }

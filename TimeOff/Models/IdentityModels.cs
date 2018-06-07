@@ -49,7 +49,7 @@ namespace TimeOff.Models
 
         public System.Data.Entity.DbSet<TimeOff.Models.Ator> Ators { get; set; }
 
-        public System.Data.Entity.DbSet<TimeOff.Models.Imagens> Imagens { get; set; }
+       // public System.Data.Entity.DbSet<TimeOff.Models.Imagens> Imagens { get; set; }
         public IEnumerable Filmes { get; internal set; }
     }
 }

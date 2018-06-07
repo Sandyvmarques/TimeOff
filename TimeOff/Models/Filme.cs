@@ -28,6 +28,8 @@ namespace TimeOff.Models
 
         public string LinkTrailer { get; set; }
 
+        public string ImagensFilme { get; set; }
+
         [ForeignKey("Realizadores")]
         [Display(Name = "Realizador")]
         public int RealizadorId { get; set; }
@@ -37,8 +39,6 @@ namespace TimeOff.Models
         public virtual ICollection<Comentarios> Comentarios { get; set; }
 
         public virtual ICollection<Categorias> Categorias { get; set; }
-
-        public virtual ICollection<Imagens> Imagens { get; set; }
 
         public virtual ICollection<Ator> Atores { get; set; }
     }

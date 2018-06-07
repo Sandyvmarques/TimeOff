@@ -18,11 +18,13 @@ namespace TimeOff.Models
         public int Id { get; set; }
 
         [Required]
-        public string Nome { get; set; }
+        public string NomeRealizador { get; set; }
 
         public DateTime DataNasc { get; set; }
 
         public String Biografia { get; set; }
+
+        public String ImagemRealizador { get; set; }
         
         public virtual ICollection<Filme> Filmes { get; set; }
     }
