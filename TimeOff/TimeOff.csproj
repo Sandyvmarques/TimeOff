@@ -193,9 +193,14 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\AtorsController.cs" />
+    <Compile Include="Controllers\CategoriasController.cs" />
+    <Compile Include="Controllers\ComentariosController.cs" />
     <Compile Include="Controllers\FilmesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\ImagensController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\RealizadorsController.cs" />
+    <Compile Include="Controllers\UtilizadorsController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -280,6 +285,31 @@
     <Content Include="Views\Ators\Details.cshtml" />
     <Content Include="Views\Ators\Edit.cshtml" />
     <Content Include="Views\Ators\Index.cshtml" />
+    <Content Include="Views\Realizadors\Create.cshtml" />
+    <Content Include="Views\Realizadors\Delete.cshtml" />
+    <Content Include="Views\Realizadors\Details.cshtml" />
+    <Content Include="Views\Realizadors\Edit.cshtml" />
+    <Content Include="Views\Realizadors\Index.cshtml" />
+    <Content Include="Views\Categorias\Create.cshtml" />
+    <Content Include="Views\Categorias\Delete.cshtml" />
+    <Content Include="Views\Categorias\Details.cshtml" />
+    <Content Include="Views\Categorias\Edit.cshtml" />
+    <Content Include="Views\Categorias\Index.cshtml" />
+    <Content Include="Views\Comentarios\Create.cshtml" />
+    <Content Include="Views\Comentarios\Delete.cshtml" />
+    <Content Include="Views\Comentarios\Details.cshtml" />
+    <Content Include="Views\Comentarios\Edit.cshtml" />
+    <Content Include="Views\Comentarios\Index.cshtml" />
+    <Content Include="Views\Imagens\Create.cshtml" />
+    <Content Include="Views\Imagens\Delete.cshtml" />
+    <Content Include="Views\Imagens\Details.cshtml" />
+    <Content Include="Views\Imagens\Edit.cshtml" />
+    <Content Include="Views\Imagens\Index.cshtml" />
+    <Content Include="Views\Utilizadors\Create.cshtml" />
+    <Content Include="Views\Utilizadors\Delete.cshtml" />
+    <Content Include="Views\Utilizadors\Details.cshtml" />
+    <Content Include="Views\Utilizadors\Edit.cshtml" />
+    <Content Include="Views\Utilizadors\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

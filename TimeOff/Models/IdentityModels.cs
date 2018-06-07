@@ -1,4 +1,5 @@
-﻿using System.Data.Entity;
+﻿using System.Collections;
+using System.Data.Entity;
 using System.Data.Entity.ModelConfiguration.Conventions;
 using System.Security.Claims;
 using System.Threading.Tasks;
@@ -47,5 +48,8 @@ namespace TimeOff.Models
         }
 
         public System.Data.Entity.DbSet<TimeOff.Models.Ator> Ators { get; set; }
+
+        public System.Data.Entity.DbSet<TimeOff.Models.Imagens> Imagens { get; set; }
+        public IEnumerable Filmes { get; internal set; }
     }
 }

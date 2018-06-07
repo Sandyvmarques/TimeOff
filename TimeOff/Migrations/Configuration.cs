@@ -16,7 +16,7 @@ namespace TimeOff.Migrations
 
         protected override void Seed(TimeOff.Models.ApplicationDbContext context)
         {
-            
+
             //seed
             //utilizador
             var user = new List<Utilizador> {
@@ -93,7 +93,7 @@ namespace TimeOff.Migrations
                 new Imagens { Id=3, Imagem =" bn,m", FilmeId =3},
                 new Imagens { Id=4, Imagem ="", FilmeId =4},
                 new Imagens { Id=5, Imagem ="", FilmeId =5},
-                new Imagens { Id=6, Imagem ="",  FilmeId =6},
+                new Imagens { Id=6, Imagem ="",  FilmeId =5}
             };
             comments.ForEach(dd => context.Comentarios.AddOrUpdate(d => d.Id, dd));
             context.SaveChanges();
