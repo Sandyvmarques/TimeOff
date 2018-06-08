@@ -17,12 +17,13 @@ namespace TimeOff.Models
         [Key]
         public int Id { get; set; }
 
-        [Required]
-        public string UserName { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "O {0} é de preenchimento obrigatório!")]
+        [RegularExpression("[A-ZÍÉÂÁ][a-záéíóúàèìòùâêîôûäëïöüãõç]+(( |'|-| dos | da | de | e | d')[A-ZÍÉÂÁ][a-záéíóúàèìòùâêîôûäëïöüãõç]+){1,3}",
+           ErrorMessage = "O {0} apenas pode conter letras e espaços em branco. Cada palavra começa em Maiúscula, seguida de minúsculas...")]
         public string NomeCompleto { get; set; }
 
+        [DisplayFormat(DataFormatString = "{0:yyyy/MM/dd}", ApplyFormatInEditMode =true)]
         public DateTime DataNasc { get; set; }
 
         [Required]

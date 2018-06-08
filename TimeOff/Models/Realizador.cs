@@ -20,6 +20,7 @@ namespace TimeOff.Models
         [Required]
         public string NomeRealizador { get; set; }
 
+        [DisplayFormat(DataFormatString = "{0:yyyy/MM/dd}", ApplyFormatInEditMode = true)]
         public DateTime DataNasc { get; set; }
 
         public String Biografia { get; set; }

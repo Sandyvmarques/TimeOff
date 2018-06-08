@@ -48,7 +48,7 @@ namespace TimeOff.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,Titulo,Sinopse,AnoLanc,LinkTrailer,RealizadorId")] Filme filme)
+        public ActionResult Create([Bind(Include = "Id,Titulo,Sinopse,AnoLanc,LinkTrailer,ImagensFilme,RealizadorId")] Filme filme)
         {
             if (ModelState.IsValid)
             {
@@ -82,7 +82,7 @@ namespace TimeOff.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,Titulo,Sinopse,AnoLanc,LinkTrailer,RealizadorId")] Filme filme)
+        public ActionResult Edit([Bind(Include = "Id,Titulo,Sinopse,AnoLanc,LinkTrailer,ImagensFilme,RealizadorId")] Filme filme)
         {
             if (ModelState.IsValid)
             {

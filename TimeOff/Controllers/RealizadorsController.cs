@@ -46,7 +46,7 @@ namespace TimeOff.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,Nome,DataNasc,Biografia")] Realizador realizador)
+        public ActionResult Create([Bind(Include = "Id,Nome,DataNasc,Biografia,ImagemRealizador")] Realizador realizador)
         {
             if (ModelState.IsValid)
             {
@@ -78,7 +78,7 @@ namespace TimeOff.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,Nome,DataNasc,Biografia")] Realizador realizador)
+        public ActionResult Edit([Bind(Include = "Id,Nome,DataNasc,Biografia,ImagemRealizador")] Realizador realizador)
         {
             if (ModelState.IsValid)
             {

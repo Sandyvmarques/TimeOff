@@ -20,12 +20,12 @@ namespace TimeOff.Migrations
             //seed
             //utilizador
             var user = new List<Utilizador> {
-                new Utilizador {Id=1,UserName = "RGocalves", DataNasc = new DateTime(1996,5,3), NomeCompleto = "Rafael André Campos Gonçalves", Email = "racggoncalves@gmail.com", Sexo = "Masculino" },
-                new Utilizador {Id=2,UserName = "TGoncalves", DataNasc = new DateTime(1992,4,11) , NomeCompleto = "Tiago Jorge Campos Gonçalves", Email = "tjorge@gmail.com", Sexo = "Masculino"},
-                new Utilizador {Id=3,UserName = "Symao96", DataNasc = new DateTime(1996,10,2) , NomeCompleto = "Simão Pedro Oliveira Moleiro", Email = "symao96@gmail.com", Sexo = "Masculino" },
-                new Utilizador {Id=4,UserName = "Bokica", DataNasc = new DateTime(1995,7,2), NomeCompleto = "Beatriz Bangurá da Silva Okica de Sá", Email = "beatrizbokica@gmail.com", Sexo = "Femenina"},
-                new Utilizador {Id=5,UserName = "Pfaustino", DataNasc = new DateTime(1995,10,2) , NomeCompleto = "Praticia Sofia Margalhães Faustino", Email = "patricia.sofia.faustino@gmail.com", Sexo = "Feminina"},
-                new Utilizador {Id=6,UserName = "Mandreia", DataNasc = new DateTime(1997,8,22) , NomeCompleto = "Marta Andreia Campos Ribeiro", Email = "Mandreia@gmail.com", Sexo = "Femenino"},
+                new Utilizador {Id=1, DataNasc = new DateTime(1996,5,3), NomeCompleto = "Rafael André Campos Gonçalves", Email = "racggoncalves@gmail.com", Sexo = "Masculino" },
+                new Utilizador {Id=2, DataNasc = new DateTime(1992,4,11) , NomeCompleto = "Tiago Jorge Campos Gonçalves", Email = "tjorge@gmail.com", Sexo = "Masculino"},
+                new Utilizador {Id=3, DataNasc = new DateTime(1996,10,2) , NomeCompleto = "Simão Pedro Oliveira Moleiro", Email = "symao96@gmail.com", Sexo = "Masculino" },
+                new Utilizador {Id=4, DataNasc = new DateTime(1995,7,2), NomeCompleto = "Beatriz Bangurá Okica de Sá", Email = "beatrizbokica@gmail.com", Sexo = "Femenina"},
+                new Utilizador {Id=5, DataNasc = new DateTime(1995,10,2) , NomeCompleto = "Patricia Sofia Margalhães Faustino", Email = "patricia.sofia.faustino@gmail.com", Sexo = "Feminina"},
+                new Utilizador {Id=6, DataNasc = new DateTime(1997,8,22) , NomeCompleto = "Marta Andreia Campos Ribeiro", Email = "Mandreia@gmail.com", Sexo = "Femenino"},
             };
 
             user.ForEach(dd => context.Utilizador.AddOrUpdate(d => d.Id, dd));
@@ -87,7 +87,7 @@ namespace TimeOff.Migrations
             //Atores
             var atores = new List<Ator>
             {
-                new Ator { Id=1, Nome="Margot Robbie", Filmes=new List<Filme> { film[0]}},
+                new Ator { Id=1, Nome="Margot Robbie", Filmes=new List<Filme> { film[0]},},
                 new Ator { Id=2, Nome="Jared Leto", Filmes=new List<Filme> { film[0] }},
                 new Ator { Id=3, Nome="Will Smith", Filmes=new List<Filme> {film[0] }},
                 new Ator { Id=4, Nome="Hugh Jackman", Filmes=new List<Filme> {film[2] }},
