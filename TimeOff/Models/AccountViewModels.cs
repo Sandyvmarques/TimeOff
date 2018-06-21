@@ -95,8 +95,8 @@ namespace TimeOff.Models
         public string Password { get; set; }
 
         [DataType(DataType.Password)]
-        [Display(Name = "Confirm password")]
-        [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
+        [Display(Name = "Confirma password")]
+        [Compare("Password", ErrorMessage = "A Password e a Nova Password não correspondem!")]
         public string ConfirmPassword { get; set; }
 
         public string Code { get; set; }

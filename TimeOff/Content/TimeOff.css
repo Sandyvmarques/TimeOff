@@ -1,0 +1,36 @@
+﻿
+.logo {
+    width: 100%;
+    color: white;
+    background-color: #000000;
+    text-align: center;
+    font-family: Arial;
+    font-size: 100px;
+    text-decoration:none;
+}
+.texto {
+    font-family: Arial;
+    text-align: center;
+    color: #000000;
+    position: relative;
+    top: -200px;
+    padding: 1px;
+    width: 380px;
+    opacity: 0.8;
+    background-color: #FFFFFF;
+    text-decoration: none;
+}
+.nome {
+    font-family: Arial;
+    text-align: left;
+    color: #000000;
+    font-size:40px;
+    margin-top:15px;
+}
+.sinopse {
+    font-family: Arial;
+    color: #000000;
+    font-size: 18px;
+    text-align:justify;
+}
+
