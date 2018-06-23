@@ -4,44 +4,31 @@
     ViewBag.Title = "Details";
 }
 
-<h2>Details</h2>
+@*Vai buscar o css*@
 
-<div>
-    <h4>Realizador</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.NomeRealizador)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.NomeRealizador)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.DataNasc)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.DataNasc)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Biografia)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Biografia)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.ImagemRealizador)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.ImagemRealizador)
-        </dd>
-    </dl>
+<link rel="stylesheet" href="~/Content/TimeOff.css" />
+<div id="main">
+    <div style="border:solid;border-color:black;">
+        @*Fotografia do Realizador*@
+        <img src="~/Imagens/@Html.DisplayFor(model => model.ImagemRealizador)" width="285" height="413" />
+    </div>
+    <div>
+        @*Nome do Realizador*@
+        <div class="nome">@Html.DisplayFor(model => model.NomeRealizador)</div>
+        @*Ano de Nascimento*@
+        <div style="margin-left: 150px;">
+            <h3 style="font-family:Arial; font-weight:bold; color:black;">@Html.DisplayFor(model => model.DataNasc)</h3>
+        </div>
+     </div>
 </div>
+  
+
+@*Biografia do Realizador*@
+<div class="sinopse">
+    <h3 style="font-family:Arial; font-weight:bold; color:darkred"> Sinopse</h3>
+    @Html.DisplayFor(model => model.Biografia)
+</div>
+
 <p>
     @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
     @Html.ActionLink("Back to List", "Index")

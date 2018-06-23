@@ -4,48 +4,53 @@
     ViewBag.Title = "Details";
 }
 @*Vai buscar o css*@
-<link rel="stylesheet" href="~/Content/TimeOff.css" />
-<div class="logo">
-@Html.ActionLink("TimeOff", "Index", "Home")
 
+<link rel="stylesheet" href="~/Content/TimeOff.css" />
+<div id="main">
+        <div style="border:solid;border-color:black;">
+        @*Imagnes do Filme*@
+        <img src="~/Imagens/@Html.DisplayFor(model => model.ImagensFilme)" width="285" height="413" />
+        </div>
+        <div>
+        @*Nome do Filme*@
+        <div class="nome">@Html.DisplayFor(model => model.Titulo)</div>
+        @*Ano de lançamento do Filme*@
+        <div style="margin-left: 150px;">
+            <h3 style="font-family:Arial; font-weight:bold; color:black;">@Html.DisplayFor(model => model.AnoLanc)</h3>
+        </div>
+        @*nome do Realizador do Filme*@
+        <div style="margin-left: 150px;">
+            <h3 style="font-family:Arial; font-weight:bold; color:black;">
+            @Html.DisplayFor(model => model.Realizadores.NomeRealizador)</h3> @*fazer ligação para relaizadores*@
+        </div>
+        @*Categoria do filme*@
+
+        @*nomes dos atores do Filme*@
+        <div style="margin-left: 150px;">
+            <p style="font-family:Arial; font-weight:bold; color:black; font-size:18px;">
+             @foreach (var ator in Model.Atores)
+            {@Html.DisplayFor(a => ator.Nome) <br />}
+            </p>
+        </div>
+    </div>
 </div>
 
-    <table style="width:100%;">
-        <tr>
-            <th>
-                <img src="~/Imagens/@Html.DisplayFor(model => model.ImagensFilme)" width="380" height="550" />
-            </th>
-            <th>
-                <div class="nome" style="font-family:Arial; font-weight:bold; color:darkred">@Html.DisplayFor(model => model.Titulo)</div>
+@*Sinopse do Filmw*@
+<div class="sinopse">
+    <h3 style="font-family:Arial; font-weight:bold; color:darkred"> Sinopse</h3>
+    @Html.DisplayFor(model => model.Sinopse)
+</div>
+@*Trailer do filme*@
+<div style="text-align:start;">
+    <h3 style="font-family:Arial; font-weight:bold; color:darkred"> Ver Trailer</h3>
 
-                <div>
-                    <h4 style="font-family:Arial; font-weight:bold; color:black;">@Html.DisplayFor(model => model.AnoLanc)</h4>
-                </div>
+    <iframe width="854" height="480" src=" @Html.DisplayFor(model => model.LinkTrailer)"></iframe>
+</div>
+@*Adicionar Comentários*@
 
-                <div>
-                    <h4 style="font-family:Arial; font-weight:bold; color:black;">@Html.DisplayFor(model => model.Realizadores.NomeRealizador)</h4>
-                </div>
 
-                <div>
-                    <h4 style="font-family:Arial; font-weight:bold; color:black;">
-                        @foreach (var ator in Model.Atores)
 
-                        {@Html.DisplayFor(a => ator.Nome)<br />}
-
-                    </h4>
-                </div>
-
-                <div class="sinopse">
-                    <h3 style="font-family:Arial; font-weight:bold; color:darkred"> Sinopse:</h3>
-                    @Html.DisplayFor(model => model.Sinopse)
-                </div>
-                <div>
-                    <iframe width="427" height="240" src=" @Html.DisplayFor(model => model.LinkTrailer)"></iframe>
-                </div>
-            </th>
-        </tr>
-    </table>
-    <p>
-        @Html.ActionLink("Editar", "Edit", new { id = Model.Id }) |
-        @Html.ActionLink("Voltar para a Lista", "Index")
-    </p>
+<p>
+    @Html.ActionLink("Editar", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Voltar para a Lista", "Index")
+</p>

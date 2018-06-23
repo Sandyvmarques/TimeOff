@@ -6,16 +6,19 @@
     text-align: center;
     font-family: Arial;
     font-size: 100px;
-    text-decoration:none;
+    text-decoration: none;
+}
+.logo:hover,
+.logo:focus {
+    text-decoration: none;
 }
 .texto {
     font-family: Arial;
     text-align: center;
     color: #000000;
     position: relative;
-    top: -200px;
+    top: -160px;
     padding: 1px;
-    width: 380px;
     opacity: 0.8;
     background-color: #FFFFFF;
     text-decoration: none;
@@ -23,14 +26,22 @@
 .nome {
     font-family: Arial;
     text-align: left;
-    color: #000000;
-    font-size:40px;
-    margin-top:15px;
+    color: darkred;
+    font-size: 50px;
+    font-weight: bold;
+    margin-top: -130px;
+    margin-left: 150px;
 }
 .sinopse {
     font-family: Arial;
     color: #000000;
-    font-size: 18px;
+    font-size: 16px;
     text-align:justify;
 }
-
+#main {
+    margin-top:40px;
+    display: -webkit-flex;
+    -webkit-align-items: center; 
+    display: flex;
+    align-items: center;
+}

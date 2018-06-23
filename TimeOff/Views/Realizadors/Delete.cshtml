@@ -4,40 +4,37 @@
     ViewBag.Title = "Delete";
 }
 
-<h2>Delete</h2>
+<h2>Apagar</h2>
 
-<h3>Are you sure you want to delete this?</h3>
+<h3>Tens a certeza que queres que apagar isto ?</h3>
 <div>
-    <h4>Realizador</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.NomeRealizador)
-        </dt>
+    @*Vai buscar o css*@
 
-        <dd>
-            @Html.DisplayFor(model => model.NomeRealizador)
-        </dd>
+    <link rel="stylesheet" href="~/Content/TimeOff.css" />
+    <div id="main">
+        <div style="border:solid;border-color:black;">
+            @*Fotografia do Realizador*@
+            <img src="~/Imagens/@Html.DisplayFor(model => model.ImagemRealizador)" width="285" height="413" />
+        </div>
+        <div>
+            @*Nome do Realizador*@
+            <div class="nome">@Html.DisplayFor(model => model.NomeRealizador)</div>
+            @*Ano de Nascimento*@
+            <div style="margin-left: 150px;">
+                <h3 style="font-family:Arial; font-weight:bold; color:black;">@Html.DisplayFor(model => model.DataNasc)</h3>
+            </div>
+        </div>
+    </div>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.DataNasc)
-        </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.DataNasc)
-        </dd>
+    @*Biografia do Realizador*@
+    <div class="sinopse">
+        <h3 style="font-family:Arial; font-weight:bold; color:darkred"> Sinopse</h3>
+        @Html.DisplayFor(model => model.Biografia)
+    </div>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Biografia)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Biografia)
-        </dd>
-
-    </dl>
-
-    @using (Html.BeginForm()) {
+    @using (Html.BeginForm())
+    {
         @Html.AntiForgeryToken()
 
         <div class="form-actions no-color">
