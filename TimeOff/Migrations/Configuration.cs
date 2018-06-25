@@ -59,7 +59,7 @@ namespace TimeOff.Migrations
 
             var category = new List<Categorias>
             {
-                new Categorias {Id=1, Nome = "Ação" },
+                new Categorias {Id=1, Nome = "Ação"},
                 new Categorias {Id=2, Nome = "Animação"},
                 new Categorias {Id=3, Nome = "Comédia"},
                 new Categorias {Id=4, Nome = "Drama"},

@@ -13,20 +13,23 @@ namespace TimeOff.Models
         {
             Filmes = new HashSet<Filme>();
         }
-
+        //chave primária 
         [Key]
         public int Id { get; set; }
 
         [Required]
         public string NomeRealizador { get; set; }
 
-        [DisplayFormat(DataFormatString = "{0:yyyy/MM/dd}", ApplyFormatInEditMode = true)]
+        [DisplayFormat(DataFormatString = "{0:yyyy/MM/dd}", ApplyFormatInEditMode = true)] //formata a data para aparecer Ano/Mês/Dia
         public DateTime DataNasc { get; set; }
 
+        [Required]
         public String Biografia { get; set; }
 
+        [Required]
         public String ImagemRealizador { get; set; }
-        
+
+        // especifica que um Realizador tem vários Filmes
         public virtual ICollection<Filme> Filmes { get; set; }
     }
 }

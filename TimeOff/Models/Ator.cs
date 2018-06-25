@@ -12,13 +12,14 @@ namespace TimeOff.Models
         {
             Filmes = new HashSet<Filme>();
         }
-
+        //chave primária
         [Key]
         public int Id { get; set; }
 
         [Required]
         public string Nome { get; set; }
 
+        // especifica que um Ator tem vários Filmes
         public virtual ICollection<Filme> Filmes { get; set; }
     }
 }
