@@ -21,6 +21,7 @@ namespace TimeOff.Controllers
         }
 
         // GET: Categorias/Details/5
+        [Authorize(Roles = "Admin")]
         public ActionResult Details(int? id)
         {
             if (id == null)
@@ -36,6 +37,7 @@ namespace TimeOff.Controllers
         }
 
         // GET: Categorias/Create
+        [Authorize(Roles = "Admin")]
         public ActionResult Create()
         {
             return View();
@@ -46,6 +48,7 @@ namespace TimeOff.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Admin")]
         public ActionResult Create([Bind(Include = "Id,Nome")] Categorias categorias)
         {
             if (ModelState.IsValid)
@@ -59,6 +62,7 @@ namespace TimeOff.Controllers
         }
 
         // GET: Categorias/Edit/5
+        [Authorize(Roles = "Admin")]
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -77,6 +81,7 @@ namespace TimeOff.Controllers
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
+        [Authorize(Roles = "Admin")]
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "Id,Nome")] Categorias categorias)
         {
@@ -90,6 +95,7 @@ namespace TimeOff.Controllers
         }
 
         // GET: Categorias/Delete/5
+        [Authorize(Roles = "Admin")]
         public ActionResult Delete(int? id)
         {
             if (id == null)
@@ -106,6 +112,7 @@ namespace TimeOff.Controllers
 
         // POST: Categorias/Delete/5
         [HttpPost, ActionName("Delete")]
+        [Authorize(Roles = "Admin")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {

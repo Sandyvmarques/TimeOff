@@ -9,15 +9,11 @@
     @Styles.Render("~/Content/TimeOff.css")
 }
 <style>
-
     body {
         background-color: beige;
     }
 </style>
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table></table>
+
 
 <div style="display: flex; flex-wrap: wrap; justify-content: space-between;">
     @foreach (var item in Model)
@@ -29,7 +25,9 @@
             </h2>
         </div>
         <img src="~/Imagens/@item.ImagensFilme" style="width: 100%; min-height: 100%; height: auto; margin-top:-65px;" />
-
     </div>
     }
 </div>
+<p>
+    @Html.ActionLink("Criar Novo", "Create") <br />
+</p>

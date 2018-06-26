@@ -22,7 +22,7 @@ namespace TimeOff.Migrations
             //seed
             //utilizador
             var user = new List<Utilizador> {
-                new Utilizador {Id=1, DataNasc = new DateTime(1996,5,3), NomeCompleto = "Rafael André Campos Gonçalves", Email = "racggoncalves@gmail.com", Sexo = "Muito pouco" },
+                new Utilizador {Id=1, DataNasc = new DateTime(1996,5,3), NomeCompleto = "Rafael André Campos Gonçalves", Email = "racggoncalves@gmail.com", Sexo = "Masculino" },
                 new Utilizador {Id=2, DataNasc = new DateTime(1992,4,11) , NomeCompleto = "Tiago Jorge Campos Gonçalves", Email = "tjorge@gmail.com", Sexo = "Masculino"},
                 new Utilizador {Id=3, DataNasc = new DateTime(1996,10,2) , NomeCompleto = "Simão Pedro Oliveira Moleiro", Email = "symao96@gmail.com", Sexo = "Masculino" },
                 new Utilizador {Id=4, DataNasc = new DateTime(1995,7,2), NomeCompleto = "Beatriz Bangurá Okica de Sá", Email = "beatrizbokica@gmail.com", Sexo = "Femenina"},
@@ -115,7 +115,7 @@ namespace TimeOff.Migrations
 
             category.ForEach(dd => context.Categorias.AddOrUpdate(d => d.Id, dd));
             context.SaveChanges();
-            //filme
+            //filmes
             var film = new List<Filme>
             {
                 new Filme {Id=1,Titulo = "Suicide Squad", ImagensFilme="suicideSquad.jpg", Sinopse = "Um grupo de conhecidos super-vilões é recrutado pelo governo americano com o objectivo de executar uma missão demasiado perigosa para ser entregue a super-heróis. Habituados a trabalhar por conta própria, os vilões são forçados a superar antigos conflitos e metas individuais para trabalharem em equipa. Em troca, o governo promete-lhes perdão...", AnoLanc = 2016,LinkTrailer="https://www.youtube.com/embed/CmRih_VtVAs", RealizadorId = 1,Categorias= new List<Categorias>{category[0],category[6],category[7]}},

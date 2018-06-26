@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
+using System.IO;
 using System.Linq;
 using System.Net;
 using System.Web;
@@ -36,6 +37,7 @@ namespace TimeOff.Controllers
         }
 
         // GET: Realizadors/Create
+        [Authorize(Roles = "Admin")] //dá permições ao Admin para Criar novos Realizadores 
         public ActionResult Create()
         {
             return View();
@@ -46,12 +48,18 @@ namespace TimeOff.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,Nome,DataNasc,Biografia,ImagemRealizador")] Realizador realizador)
+        [Authorize(Roles = "Admin")] 
+        public ActionResult Create([Bind(Include = "Id,NomeRealizador,DataNasc,Biografia,ImagemRealizador")] Realizador realizador, HttpPostedFileBase ImagemRealizador)
         {
+            if (ImagemRealizador != null)
+            {
+                realizador.ImagemRealizador = ImagemRealizador.FileName;
+            }
             if (ModelState.IsValid)
             {
                 db.Realizador.Add(realizador);
                 db.SaveChanges();
+                ImagemRealizador.SaveAs(Path.Combine(Server.MapPath("~/Imagens/" + ImagemRealizador.FileName)));
                 return RedirectToAction("Index");
             }
 
@@ -59,6 +67,7 @@ namespace TimeOff.Controllers
         }
 
         // GET: Realizadors/Edit/5
+        [Authorize(Roles = "Admin")]
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -78,6 +87,7 @@ namespace TimeOff.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Admin")]
         public ActionResult Edit([Bind(Include = "Id,Nome,DataNasc,Biografia,ImagemRealizador")] Realizador realizador)
         {
             if (ModelState.IsValid)
@@ -90,6 +100,7 @@ namespace TimeOff.Controllers
         }
 
         // GET: Realizadors/Delete/5
+        [Authorize(Roles = "Admin")]
         public ActionResult Delete(int? id)
         {
             if (id == null)
@@ -106,6 +117,7 @@ namespace TimeOff.Controllers
 
         // POST: Realizadors/Delete/5
         [HttpPost, ActionName("Delete")]
+        [Authorize(Roles = "Admin")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {

@@ -52,7 +52,8 @@ namespace TimeOff.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         [Authorize(Roles = "Admin")]
-        public ActionResult Create([Bind(Include = "Id,Titulo,Sinopse,AnoLanc,LinkTrailer,ImagensFilme,RealizadorId")] Filme filme,HttpPostedFileBase ImagensFilme, List<int> Categorias)
+        public ActionResult Create([Bind(Include = "Id,Titulo,Sinopse,AnoLanc,LinkTrailer,ImagensFilme,RealizadorId")]
+        Filme filme,HttpPostedFileBase ImagensFilme, List<int> Categorias, List<int> ator)
         {
             if(ImagensFilme != null)
             {
@@ -61,9 +62,16 @@ namespace TimeOff.Controllers
             if (ModelState.IsValid)
             {
                 db.Filme.Add(filme);
+                //lista das categorias dos filmes
                 IQueryable<Categorias> temp2 = db.Categorias.Where(a => Categorias.Any(aa => a.Id==aa));
                 filme.Categorias = temp2.ToList();
                 db.SaveChanges();
+                //lista dos atores 
+                /*IQueryable<Ator> temp3 = db.Ators.Where(a => ator.Any(aa => a.Id == aa));
+                filme.Atores = temp3.ToList();*/
+
+                db.SaveChanges();
+                //Escolher imagem dos Filmes
                 ImagensFilme.SaveAs(Path.Combine(Server.MapPath("~/Imagens/"+ ImagensFilme.FileName)));
                 return RedirectToAction("Index");
             }

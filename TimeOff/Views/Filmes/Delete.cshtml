@@ -27,9 +27,7 @@
         @*nome do Realizador do Filme*@
         <div style="margin-left: 150px;">
             <h3 style="font-family:Arial; font-weight:bold; color:black;">
-
                 @Html.DisplayFor(model => model.Realizadores.NomeRealizador)
-
                 @Html.ActionLink("Realizador", "Details", "realizadors", new { id = @Html.DisplayFor(model => model.Realizadores.Id) }, null)
             </h3>
         </div>

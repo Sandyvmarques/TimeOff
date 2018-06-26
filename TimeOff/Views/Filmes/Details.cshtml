@@ -29,25 +29,24 @@
         <div style="margin-left: 150px;">
             <h3 style="font-family:Arial; font-weight:bold; color:black;">@Html.DisplayFor(model => model.AnoLanc)</h3>
         </div>
+        @*Categoria do filme*@
+        <div style="margin-left: 150px;">
+            <p style="font-family:Arial; font-weight:bold; color:black; font-size:18px;">
+                @foreach (var cat in Model.Categorias)
+            {@Html.DisplayFor(a => cat.Nome)}
+            </p>
+        </div>
         @*nome do Realizador do Filme*@
         <div style="margin-left: 150px;">
             <h3 style="font-family:Arial; font-weight:bold; color:black;">
                 @Html.ActionLink(Model.Realizadores.NomeRealizador, "Details", "realizadors", new { id = Model.Realizadores.Id }, new { @class = "realizador" })
             </h3>
         </div>
-        @*Categoria do filme*@
-        <div style="margin-left: 150px;">
-            <p style="font-family:Arial; font-weight:bold; color:black; font-size:18px;">
-                @foreach (var cat in Model.Categorias)
-                {@Html.DisplayFor(a => cat.Nome)}
-            </p>
-        </div>
-
         @*nomes dos atores do Filme*@
         <div style="margin-left: 150px;">
             <p style="font-family:Arial; font-weight:bold; color:black; font-size:18px;">
                 @foreach (var ator in Model.Atores)
-                {@Html.DisplayFor(a => ator.Nome) <br />}
+            {@Html.DisplayFor(a => ator.Nome) <br />}
             </p>
         </div>
     </div>
