@@ -3,13 +3,15 @@
 @{
     ViewBag.Title = "Delete";
 }
-@*Vai buscar o css*@
 
-<link rel="stylesheet" href="~/Content/TimeOff.css" />
+@*Vai buscar o css*@
+@section Styles {
+
+    @Styles.Render("~/Content/TimeOff.css")
+}
 
 <h2>Apagar Filme</h2>
 
-<h3>Tens a certeza que queres apagar isto?</h3>
 <div id="main">
     @*Imagens do Filme*@
     <div style="border:solid;border-color:black;">
@@ -32,19 +34,23 @@
             </h3>
         </div>
         @*Categoria do filme*@
-
-
+        <div style="margin-left: 150px;">
+            <p style="font-family:Arial; font-weight:bold; color:black; font-size:18px;">
+                @foreach (var cat in Model.Categorias)
+            {@Html.DisplayFor(a => cat.Nome) <br />}
+            </p>
+        </div>
         @*nomes dos atores do Filme*@
         <div style="margin-left: 150px;">
             <p style="font-family:Arial; font-weight:bold; color:black; font-size:18px;">
                 @foreach (var ator in Model.Atores)
-                {@Html.DisplayFor(a => ator.Nome) <br />}
+            {@Html.DisplayFor(a => ator.Nome) <br />}
             </p>
         </div>
     </div>
 </div>
 
-@*Sinopse do Filmw*@
+@*Sinopse do Filme*@
 <div class="sinopse">
     <h3 style="font-family:Arial; font-weight:bold; color:darkred"> Sinopse</h3>
     @Html.DisplayFor(model => model.Sinopse)
@@ -57,11 +63,7 @@
 </div>
 @*Adicionar Comentários*@
 
-<p>
-    @Html.ActionLink("Editar", "Edit", new { id = Model.Id }) |
-    @Html.ActionLink("Voltar para a Lista", "Index")
-</p>
-
+<h3>Tens a certeza que queres apagar isto?</h3>
 
 @using (Html.BeginForm())
 {
@@ -72,4 +74,3 @@
         @Html.ActionLink("Back to List", "Index")
     </div>
 }
-</div>

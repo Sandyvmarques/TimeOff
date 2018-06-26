@@ -1,7 +1,12 @@
 ﻿@model IEnumerable<TimeOff.Models.Realizador>
 
 @{
-    ViewBag.Title = "Indez";
+    ViewBag.Title = "Index";
+}
+@*Vai buscar o css*@
+@section Styles {
+
+    @Styles.Render("~/Content/TimeOff.css")
 }
 
 <h2>Index</h2>
@@ -26,28 +31,29 @@
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.NomeRealizador)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.DataNasc)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Biografia)
-        </td>
-        <td>
-            <a href="~/imagens/@item.ImagemRealizador" target="_blank">
-             <img src="~/imagens/@item.ImagemRealizador" width="150" height="200" />
-            </a>
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
-            @Html.ActionLink("Details", "Details", new { id=item.Id }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
-        </td>
-    </tr>
-}
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.NomeRealizador)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DataNasc)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Biografia)
+            </td>
+            <td>
+                <a href="~/imagens/@item.ImagemRealizador" target="_blank">
+                    <img src="~/imagens/@item.ImagemRealizador" width="150" height="200" />
+                </a>
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
+                @Html.ActionLink("Details", "Details", new { id = item.Id }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+            </td>
+        </tr>
+    }
 
 </table>

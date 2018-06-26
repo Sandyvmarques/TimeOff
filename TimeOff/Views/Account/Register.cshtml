@@ -5,7 +5,7 @@
 
 <h2 style="color:brown; font-size:25px;">@ViewBag.Title</h2>
 
-@using (Html.BeginForm("Registar", "Account", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+@using (Html.BeginForm("Register", "Account", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
 {
     @Html.AntiForgeryToken()
     <h5>Criar Nova Conta</h5>

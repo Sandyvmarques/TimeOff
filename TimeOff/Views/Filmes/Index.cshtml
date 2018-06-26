@@ -3,74 +3,33 @@
 @{
     ViewBag.Title = "Index";
 }
+@*Vai buscar o css*@
+@section Styles {
 
-<h2>Index</h2>
+    @Styles.Render("~/Content/TimeOff.css")
+}
+<style>
 
+    body {
+        background-color: beige;
+    }
+</style>
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>
-<table>
+<table></table>
 
+<div style="display: flex; flex-wrap: wrap; justify-content: space-between;">
+    @foreach (var item in Model)
+    {
+    <div style="width: 24%; height: 413px; overflow-y:hidden; margin-top: 5px;margin-bottom: 5px; min-width: 250px;">
+        <div class="texto">
+            <h2>
+                @Html.ActionLink(item.Titulo, "Details", "filmes", new { id = item.Id }, null)
+            </h2>
+        </div>
+        <img src="~/Imagens/@item.ImagensFilme" style="width: 100%; min-height: 100%; height: auto; margin-top:-65px;" />
 
-</table>
-
-
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.Realizadores.NomeRealizador)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Titulo)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Sinopse)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.AnoLanc)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.LinkTrailer)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.ImagensFilme)
-        </th>
-        <th></th>
-    </tr>
-
-
-
-
-
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Realizadores.NomeRealizador)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Titulo)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Sinopse)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.AnoLanc)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.LinkTrailer)
-        </td>
-        <td>
-            <a href="~/imagens/@item.ImagensFilme" target="_blank">
-                <img src="~/imagens/@item.ImagensFilme" width="120" height="200" />
-            </a>
-        </td>
-        
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
-            @Html.ActionLink("Details", "Details", new { id = item.Id }) |
-            @Html.ActionLink("Delete", "Delete", new { id = item.Id })
-        </td>
-    </tr>
-}
-
-</table>
+    </div>
+    }
+</div>

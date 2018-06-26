@@ -2,15 +2,18 @@
 
 @{
     ViewBag.Title = "Delete";
+
+}
+@*Vai buscar o css*@
+@section Styles {
+
+    @Styles.Render("~/Content/TimeOff.css")
 }
 
 <h2>Apagar</h2>
 
-<h3>Tens a certeza que queres que apagar isto ?</h3>
 <div>
-    @*Vai buscar o css*@
 
-    <link rel="stylesheet" href="~/Content/TimeOff.css" />
     <div id="main">
         <div style="border:solid;border-color:black;">
             @*Fotografia do Realizador*@
@@ -32,6 +35,8 @@
         <h3 style="font-family:Arial; font-weight:bold; color:darkred"> Sinopse</h3>
         @Html.DisplayFor(model => model.Biografia)
     </div>
+
+    <h3>Tens a certeza que queres que apagar isto ?</h3>
 
     @using (Html.BeginForm())
     {

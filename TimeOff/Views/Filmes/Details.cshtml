@@ -3,52 +3,56 @@
 @{
     ViewBag.Title = "Details";
 }
+
+@*Vai buscar o css*@
+@section Styles {
+
+    @Styles.Render("~/Content/TimeOff.css")
+}
+
+@*cor do funfo *@
 <style>
     body {
         background-color: beige;
     }
 </style>
 
-@*Vai buscar o css*@
-<link rel="stylesheet" href="~/Content/TimeOff.css" />
 <div id="main">
-        @*Imagens do Filme*@
-        <div style="border:solid;border-color:black;">
-            <img src="~/Imagens/@Html.DisplayFor(model => model.ImagensFilme)" width="285" height="413" />
+    @*Imagens do Filme*@
+    <div style="border:solid;border-color:black;">
+        <img src="~/Imagens/@Html.DisplayFor(model => model.ImagensFilme)" width="285" height="413" />
+    </div>
+    <div>
+        @*Nome do Filme*@
+        <div class="nome">@Html.DisplayFor(model => model.Titulo)</div>
+        @*Ano de lançamento do Filme*@
+        <div style="margin-left: 150px;">
+            <h3 style="font-family:Arial; font-weight:bold; color:black;">@Html.DisplayFor(model => model.AnoLanc)</h3>
         </div>
-        <div>
-            @*Nome do Filme*@
-            <div class="nome">@Html.DisplayFor(model => model.Titulo)</div>
-            @*Ano de lançamento do Filme*@
-            <div style="margin-left: 150px;">
-                <h3 style="font-family:Arial; font-weight:bold; color:black;">@Html.DisplayFor(model => model.AnoLanc)</h3>
-            </div>
-            @*nome do Realizador do Filme*@
-            <div style="margin-left: 150px;">
-                <h3 style="font-family:Arial; font-weight:bold; color:black;">
-                    @Html.ActionLink(Model.Realizadores.NomeRealizador, "Details", "realizadors", new { id = Model.Realizadores.Id }, new { @class = "realizador" })
-                </h3>
-            </div>
-            @*Categoria do filme*@
-
-            <div style="margin-left: 150px;">
-                <p style="font-family:Arial; font-weight:bold; color:black; font-size:18px;">
-                    @foreach (var cat in Model.Categorias)
-            {@Html.DisplayFor(a => cat.Nome) <br />}
-                </p>
-            </div>
-
-            @*nomes dos atores do Filme*@
-            <div style="margin-left: 150px;">
-                <p style="font-family:Arial; font-weight:bold; color:black; font-size:18px;">
-                    @foreach (var ator in Model.Atores)
-            {@Html.DisplayFor(a => ator.Nome) <br />}
-                </p>
-            </div>
+        @*nome do Realizador do Filme*@
+        <div style="margin-left: 150px;">
+            <h3 style="font-family:Arial; font-weight:bold; color:black;">
+                @Html.ActionLink(Model.Realizadores.NomeRealizador, "Details", "realizadors", new { id = Model.Realizadores.Id }, new { @class = "realizador" })
+            </h3>
         </div>
+        @*Categoria do filme*@
+        <div style="margin-left: 150px;">
+            <p style="font-family:Arial; font-weight:bold; color:black; font-size:18px;">
+                @foreach (var cat in Model.Categorias)
+                {@Html.DisplayFor(a => cat.Nome)}
+            </p>
         </div>
 
-@*Sinopse do Filmw*@
+        @*nomes dos atores do Filme*@
+        <div style="margin-left: 150px;">
+            <p style="font-family:Arial; font-weight:bold; color:black; font-size:18px;">
+                @foreach (var ator in Model.Atores)
+                {@Html.DisplayFor(a => ator.Nome) <br />}
+            </p>
+        </div>
+    </div>
+</div>
+@*Sinopse do Filme*@
 <div class="sinopse">
     <h3 style="font-family:Arial; font-weight:bold; color:darkred"> Sinopse</h3>
     @Html.DisplayFor(model => model.Sinopse)
@@ -60,7 +64,17 @@
     <iframe width="854" height="480" src=" @Html.DisplayFor(model => model.LinkTrailer)"></iframe>
 </div>
 @*Adicionar Comentários*@
-<p>
-    @Html.ActionLink("Editar", "Edit", new { id = Model.Id }) |
-    @Html.ActionLink("Voltar para a Lista", "Index")
-</p>
+@if (User.IsInRole("Admin"))
+{
+    <p>
+        @Html.ActionLink("Editar", "Edit", new { id = Model.Id }) |
+        @Html.ActionLink("Voltar para a Lista", "Index")
+        @using (Html.BeginForm("Delete", "Filmes", null, FormMethod.Post, null))
+        {
+            @Html.AntiForgeryToken()
+            <input type="hidden" name="id" value="@Model.Id" />
+            <button class="btn btn-outline-danger" type="submit">Delete</button>
+        }
+
+    </p>
+}

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
+using System.IO;
 using System.Linq;
 using System.Net;
 using System.Web;
@@ -37,9 +38,11 @@ namespace TimeOff.Controllers
         }
 
         // GET: Filmes/Create
+        [Authorize(Roles = "Admin")]
         public ActionResult Create()
         {
-            ViewBag.RealizadorId = new SelectList(db.Realizador, "Id", "Nome");
+            ViewBag.RealizadorId = new SelectList(db.Realizador, "Id", "NomeRealizador");
+            ViewBag.Categorias = new SelectList(db.Categorias, "Id", "Nome");
             return View();
         }
 
@@ -48,20 +51,29 @@ namespace TimeOff.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,Titulo,Sinopse,AnoLanc,LinkTrailer,ImagensFilme,RealizadorId")] Filme filme)
+        [Authorize(Roles = "Admin")]
+        public ActionResult Create([Bind(Include = "Id,Titulo,Sinopse,AnoLanc,LinkTrailer,ImagensFilme,RealizadorId")] Filme filme,HttpPostedFileBase ImagensFilme, List<int> Categorias)
         {
+            if(ImagensFilme != null)
+            {
+                filme.ImagensFilme = ImagensFilme.FileName;
+            }
             if (ModelState.IsValid)
             {
                 db.Filme.Add(filme);
+                IQueryable<Categorias> temp2 = db.Categorias.Where(a => Categorias.Any(aa => a.Id==aa));
+                filme.Categorias = temp2.ToList();
                 db.SaveChanges();
+                ImagensFilme.SaveAs(Path.Combine(Server.MapPath("~/Imagens/"+ ImagensFilme.FileName)));
                 return RedirectToAction("Index");
             }
 
-            ViewBag.RealizadorId = new SelectList(db.Realizador, "Id", "Nome", filme.RealizadorId);
+            ViewBag.RealizadorId = new SelectList(db.Realizador, "Id", "NomeRealizador", filme.RealizadorId);
             return View(filme);
         }
 
         // GET: Filmes/Edit/5
+        [Authorize(Roles = "Admin")]
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -73,7 +85,7 @@ namespace TimeOff.Controllers
             {
                 return HttpNotFound();
             }
-            ViewBag.RealizadorId = new SelectList(db.Realizador, "Id", "Nome", filme.RealizadorId);
+            ViewBag.RealizadorId = new SelectList(db.Realizador, "Id", "NomeRealizador", filme.RealizadorId);
             return View(filme);
         }
 
@@ -82,6 +94,7 @@ namespace TimeOff.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Admin")]
         public ActionResult Edit([Bind(Include = "Id,Titulo,Sinopse,AnoLanc,LinkTrailer,ImagensFilme,RealizadorId")] Filme filme)
         {
             if (ModelState.IsValid)
@@ -90,11 +103,12 @@ namespace TimeOff.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.RealizadorId = new SelectList(db.Realizador, "Id", "Nome", filme.RealizadorId);
+            ViewBag.RealizadorId = new SelectList(db.Realizador, "Id", "NomeRealizador", filme.RealizadorId);
             return View(filme);
         }
 
         // GET: Filmes/Delete/5
+        [Authorize(Roles = "Admin")]
         public ActionResult Delete(int? id)
         {
             if (id == null)
@@ -112,9 +126,11 @@ namespace TimeOff.Controllers
         // POST: Filmes/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Admin")]
         public ActionResult DeleteConfirmed(int id)
         {
             Filme filme = db.Filme.Find(id);
+            filme.Categorias.Clear();
             db.Filme.Remove(filme);
             db.SaveChanges();
             return RedirectToAction("Index");

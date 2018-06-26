@@ -1,7 +1,7 @@
 ﻿
 .logo {
     width: 100%;
-    color: white;
+    color: beige;
     background-color: #000000;
     text-align: center;
     font-family: Arial;
@@ -16,13 +16,20 @@
     font-family: Arial;
     text-align: center;
     color: #000000;
-    position: relative;
-    top: -160px;
+    top: 280px;
     padding: 1px;
     opacity: 0.8;
     background-color: #FFFFFF;
     text-decoration: none;
+    position: sticky;
+    height: 65px;
+
 }
+    .texto h2 {
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
 .nome {
     font-family: Arial;
     text-align: left;
@@ -31,6 +38,7 @@
     font-weight: bold;
     margin-top: -130px;
     margin-left: 150px;
+    width: 100%;
 }
 .sinopse {
     font-family: Arial;
