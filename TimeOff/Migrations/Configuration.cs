@@ -53,7 +53,7 @@ namespace TimeOff.Migrations
             var store = new UserStore<ApplicationUser>(context);
             var manager = new UserManager<ApplicationUser>(store);
             /////////////////////////// ADMIN ///////////////////////////////////
-            var us = user[0];
+            var us = user[0]; //Primeiro utilizador do seed da tabela de Users
             if (!context.Users.Any(u => u.UserName == us.Email))
             {
                 var u = new ApplicationUser

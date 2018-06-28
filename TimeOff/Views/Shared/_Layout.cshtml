@@ -14,8 +14,12 @@
 <body>
     <div style="background-color:beige;margin-top:-50px;">
         <div class="container">
+
             <div class="navbar-collapse collapse">
-                @Html.Partial("_LoginPartial")
+                @Html.Partial("_LoginPartial")@*Login e logout*@
+                <div style="text-align:left; padding-top:5px;">
+                    <h4>@Html.ActionLink("Sobre", "Sobre", "Filmes", new { area = "" }, new { @class = "sobre" })</h4> @*pagina com informações sobre mim*@
+                </div>
             </div>
         </div>
     </div>

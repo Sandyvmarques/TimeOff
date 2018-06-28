@@ -51,5 +51,9 @@ namespace TimeOff.Models
 
        // public System.Data.Entity.DbSet<TimeOff.Models.Imagens> Imagens { get; set; }
         public IEnumerable Filmes { get; internal set; }
+
+        public System.Data.Entity.DbSet<TimeOff.Models.RoleViewModel> RoleViewModels { get; set; }
+
+        public System.Data.Entity.DbSet<TimeOff.Models.UserViewModel> UserViewModels { get; set; }
     }
 }

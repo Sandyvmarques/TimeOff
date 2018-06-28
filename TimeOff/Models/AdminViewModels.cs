@@ -12,7 +12,7 @@ namespace TimeOff.Models
         public string Name { get; set; }
     }
 
-    public class EditUserViewModel
+    public class UserViewModel
     {
         public string Id { get; set; }
 

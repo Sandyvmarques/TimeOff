@@ -199,12 +199,15 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\RealizadorsController.cs" />
+    <Compile Include="Controllers\RoleViewModelsController.cs" />
+    <Compile Include="Controllers\UserViewModelsController.cs" />
     <Compile Include="Controllers\UtilizadorsController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\AdminViewModels.cs" />
     <Compile Include="Models\Ator.cs" />
     <Compile Include="Models\Categorias.cs" />
     <Compile Include="Models\Comentarios.cs" />
@@ -230,6 +233,7 @@
     <Content Include="Imagens\4.jpg" />
     <Content Include="Imagens\5.jpg" />
     <Content Include="Imagens\FantasticBeast.jpg" />
+    <Content Include="Imagens\IMG_4057.JPG" />
     <Content Include="Imagens\logan.jpg" />
     <Content Include="Imagens\mebeforeyou.jpg" />
     <Content Include="Imagens\mechanic.jpg" />
@@ -312,6 +316,17 @@
     <Content Include="Views\Utilizadors\Details.cshtml" />
     <Content Include="Views\Utilizadors\Edit.cshtml" />
     <Content Include="Views\Utilizadors\Index.cshtml" />
+    <Content Include="Views\RoleViewModels\Create.cshtml" />
+    <Content Include="Views\RoleViewModels\Delete.cshtml" />
+    <Content Include="Views\RoleViewModels\Details.cshtml" />
+    <Content Include="Views\RoleViewModels\Edit.cshtml" />
+    <Content Include="Views\RoleViewModels\Index.cshtml" />
+    <Content Include="Views\UserViewModels\Create.cshtml" />
+    <Content Include="Views\UserViewModels\Delete.cshtml" />
+    <Content Include="Views\UserViewModels\Details.cshtml" />
+    <Content Include="Views\UserViewModels\Edit.cshtml" />
+    <Content Include="Views\UserViewModels\Index.cshtml" />
+    <Content Include="Views\Filmes\Sobre.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

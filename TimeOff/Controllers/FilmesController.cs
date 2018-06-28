@@ -53,29 +53,31 @@ namespace TimeOff.Controllers
         [ValidateAntiForgeryToken]
         [Authorize(Roles = "Admin")]
         public ActionResult Create([Bind(Include = "Id,Titulo,Sinopse,AnoLanc,LinkTrailer,ImagensFilme,RealizadorId")]
-        Filme filme,HttpPostedFileBase ImagensFilme, List<int> Categorias, List<int> ator)
+        Filme filme, HttpPostedFileBase ImagensFilme, List<int> Categorias, List<int> ator)
         {
-            if(ImagensFilme != null)
+            if (ImagensFilme != null)
             {
                 filme.ImagensFilme = ImagensFilme.FileName;
             }
             if (ModelState.IsValid)
             {
                 db.Filme.Add(filme);
-                //lista das categorias dos filmes
-                IQueryable<Categorias> temp2 = db.Categorias.Where(a => Categorias.Any(aa => a.Id==aa));
+                //Adicionar categorias aos filmes
+                IQueryable<Categorias> temp2 = db.Categorias.Where(a => Categorias.Any(aa => a.Id == aa));
                 filme.Categorias = temp2.ToList();
                 db.SaveChanges();
+
                 //lista dos atores 
-                /*IQueryable<Ator> temp3 = db.Ators.Where(a => ator.Any(aa => a.Id == aa));
-                filme.Atores = temp3.ToList();*/
+                IQueryable<Ator> temp3 = db.Ators.Where(a => ator.Any(aa => a.Id == aa));
+                filme.Atores = temp3.ToList();
 
                 db.SaveChanges();
-                //Escolher imagem dos Filmes
-                ImagensFilme.SaveAs(Path.Combine(Server.MapPath("~/Imagens/"+ ImagensFilme.FileName)));
+
+                //Adiciona uma imagem ao Filme
+                ImagensFilme.SaveAs(Path.Combine(Server.MapPath("~/Imagens/" + ImagensFilme.FileName)));
                 return RedirectToAction("Index");
             }
-
+            //Adicionar Realizador 
             ViewBag.RealizadorId = new SelectList(db.Realizador, "Id", "NomeRealizador", filme.RealizadorId);
             return View(filme);
         }
@@ -103,15 +105,33 @@ namespace TimeOff.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         [Authorize(Roles = "Admin")]
-        public ActionResult Edit([Bind(Include = "Id,Titulo,Sinopse,AnoLanc,LinkTrailer,ImagensFilme,RealizadorId")] Filme filme)
+        public ActionResult Edit([Bind(Include = "Id,Titulo,Sinopse,AnoLanc,LinkTrailer,ImagensFilme,RealizadorId")]
+        Filme filme, HttpPostedFileBase ImagensFilme, List<int> Categorias, List<int> ator)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(filme).State = EntityState.Modified;
+                db.Filme.Add(filme);
+                //lista das categorias dos filmes para Editar 
+
+                /*IQueryable<Categorias> temp2 = db.Categorias.Where(a => Categorias.Any(aa => a.Id == aa));
+                filme.Categorias = temp2.ToList();*/
+
                 db.SaveChanges();
+
+                //lista dos atores 
+                /*IQueryable<Ator> temp3 = db.Ators.Where(a => ator.Any(aa => a.Id == aa));
+                filme.Atores = temp3.ToList();*/
+
+                db.SaveChanges();
+                //Escolher imagem dos Filmes
+                //ImagensFilme.SaveAs(Path.Combine(Server.MapPath("~/Imagens/" + ImagensFilme.FileName)));
                 return RedirectToAction("Index");
+
             }
             ViewBag.RealizadorId = new SelectList(db.Realizador, "Id", "NomeRealizador", filme.RealizadorId);
+            ViewBag.RealizadorId = new SelectList(db.Realizador, "Id", "NomeRealizador", filme.RealizadorId);
+
+
             return View(filme);
         }
 
@@ -151,6 +171,11 @@ namespace TimeOff.Controllers
                 db.Dispose();
             }
             base.Dispose(disposing);
+        }
+        //página com informações sobre mim 
+        public ActionResult Sobre()
+        {
+            return View();
         }
     }
 }
