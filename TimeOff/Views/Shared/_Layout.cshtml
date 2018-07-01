@@ -12,7 +12,7 @@
 
 </head>
 <body>
-    <div style="background-color:beige;margin-top:-50px;">
+    <div style="background-color:beige;">
         <div class="container">
 
             <div class="navbar-collapse collapse">
@@ -33,5 +33,6 @@
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)
+    <script>$("select").chosen();</script>
 </body>
 </html>

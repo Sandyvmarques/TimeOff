@@ -222,28 +222,35 @@
   <ItemGroup>
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\chosen-sprite%402x.png" />
+    <Content Include="Content\chosen-sprite.png" />
+    <Content Include="Content\chosen.css" />
+    <Content Include="Content\chosen.min.css" />
     <Content Include="Content\TimeOff.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="imagemMinha\IMG_4057.JPG" />
+    <Content Include="imagensRealizador\1.jpg" />
+    <Content Include="imagensRealizador\2.jpg" />
+    <Content Include="imagensRealizador\3.jpg" />
+    <Content Include="imagensRealizador\4.jpg" />
+    <Content Include="imagensRealizador\5.jpg" />
+    <Content Include="imagensRealizador\IMG_4057.JPG" />
     <Content Include="Imagens\1.jpg" />
     <Content Include="Imagens\2.jpg" />
     <Content Include="Imagens\3.jpg" />
     <Content Include="Imagens\4.jpg" />
     <Content Include="Imagens\5.jpg" />
-    <Content Include="Imagens\FantasticBeast.jpg" />
-    <Content Include="Imagens\IMG_4057.JPG" />
-    <Content Include="Imagens\logan.jpg" />
-    <Content Include="Imagens\mebeforeyou.jpg" />
-    <Content Include="Imagens\mechanic.jpg" />
-    <Content Include="Imagens\suicideSquad.jpg" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
+    <Content Include="Scripts\chosen.jquery.js" />
+    <Content Include="Scripts\chosen.jquery.min.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />

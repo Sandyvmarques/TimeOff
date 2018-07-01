@@ -20,7 +20,7 @@
 <div id="main">
     @*Imagens do Filme*@
     <div style="border:solid;border-color:black;">
-        <img src="~/Imagens/@Html.DisplayFor(model => model.ImagensFilme)" width="285" height="413" />
+        <img src="~/Imagens/@Model.Id@Html.DisplayFor(model => model.ImagensFilme)" width="285" height="413" />
     </div>
     <div>
         @*Nome do Filme*@
@@ -33,7 +33,9 @@
         <div style="margin-left: 150px;">
             <p style="font-family:Arial; font-weight:bold; color:black; font-size:18px;">
                 @foreach (var cat in Model.Categorias)
-            {@Html.DisplayFor(a => cat.Nome)}
+                {@Html.DisplayFor(a => cat.Nome);
+                if (!cat.Equals(Model.Categorias.Last())) {<text>, </text>} 
+                }
             </p>
         </div>
         @*nome do Realizador do Filme*@
@@ -46,7 +48,7 @@
         <div style="margin-left: 150px;">
             <p style="font-family:Arial; font-weight:bold; color:black; font-size:18px;">
                 @foreach (var ator in Model.Atores)
-            {@Html.DisplayFor(a => ator.Nome) <br />}
+                {@Html.DisplayFor(a => ator.Nome) <br />}
             </p>
         </div>
     </div>
@@ -62,18 +64,63 @@
 
     <iframe width="854" height="480" src=" @Html.DisplayFor(model => model.LinkTrailer)"></iframe>
 </div>
-@*Adicionar Comentários*@
+@*Comentários*@
+<div class="sinopse">
+    <h3 style="font-family:Arial; font-weight:bold; color:darkred"> Comentários:</h3>
+</div>
+<div class="row">
+    <div class="col-md-1">
+        @*id do utilizador, mas quero Foto*@
+        @foreach (var foto in Model.Comentarios)
+        {
+            <div class="row">
+                <div class="col-md-12" style="background-color:lightgray; text-align:center; font-family:Arial; height:100px;margin-top:15px;">
+                    <img src="~/Imagens/@Html.DisplayFor(a => foto.Utilizadores.ImagemUtilizador)"/>
+                </div>
+            </div>
+        }
+    </div>
+
+    <div class="col-md-4">
+
+        @foreach (var foto in Model.Comentarios)
+        {
+            <div class="row">
+                <div class="col-md-12" style="background-color:lightgray; margin-left:5px; font-family:Arial;height:100px; margin-top:15px;">
+                    @*Texto do comentário*@
+                    <div>
+                        @Html.DisplayFor(a => foto.Utilizadores.NomeCompleto)
+                    </div>
+                    <div style="padding-top:10px;">
+                        <b>@Html.DisplayFor(a => foto.Texto)</b>
+                    </div>
+                    @*Data do comentário*@
+                    <div style="padding-top:45px; text-align:right;">
+                        @Html.DisplayFor(a => foto.Data)
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>
+
+
+@*ato de comentar*@
+
+
+
 @if (User.IsInRole("Admin"))
 {
-    <p>
-        @Html.ActionLink("Editar", "Edit", new { id = Model.Id }) |
-        @Html.ActionLink("Voltar para a Lista", "Index")
-        @using (Html.BeginForm("Delete", "Filmes", null, FormMethod.Post, null))
-        {
-            @Html.AntiForgeryToken()
-            <input type="hidden" name="id" value="@Model.Id" />
-            <button class="btn btn-outline-danger" type="submit">Delete</button>
-        }
+<p>
+    @Html.ActionLink("Editar", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Voltar para a Lista", "Index")
+    @using (Html.BeginForm("Delete", "Filmes", null, FormMethod.Post, null))
+    {
+        @*Só aparece para o Admin da página*@
+        @Html.AntiForgeryToken()
+        <input type="hidden" name="id" value="@Model.Id" />
+        <button class="btn btn-danger" type="submit">Apagar</button>
+    }
 
-    </p>
+</p>
 }

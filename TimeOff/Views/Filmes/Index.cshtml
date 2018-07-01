@@ -15,19 +15,30 @@
 </style>
 
 
-<div style="display: flex; flex-wrap: wrap; justify-content: space-between;">
+<div class="prim">
     @foreach (var item in Model)
     {
-    <div style="width: 24%; height: 413px; overflow-y:hidden; margin-top: 5px;margin-bottom: 5px; min-width: 250px;">
-        <div class="texto">
-            <h2>
-                @Html.ActionLink(item.Titulo, "Details", "filmes", new { id = item.Id }, null)
-            </h2>
+        <div class="seg">
+            <div class="texto">
+                <h2>
+                    @Html.ActionLink(item.Titulo, "Details", "filmes", new { id = item.Id }, null)
+                </h2>
+            </div>
+            <img src="~/Imagens/@item.Id@item.ImagensFilme" style="width: 100%; min-height: 100%; height: auto; margin-top:-65px;" />
         </div>
-        <img src="~/Imagens/@item.ImagensFilme" style="width: 100%; min-height: 100%; height: auto; margin-top:-65px;" />
-    </div>
     }
 </div>
+
+@*Só aparece para o Admin da página*@
 <p>
-    @Html.ActionLink("Criar Novo", "Create") <br />
+    @if (User.IsInRole("Admin"))
+    {
+        @Html.ActionLink("Criar Novo Filme", "Create", null, new { @class = "btn btn-primary btn-large" })<br /> {
+            @Html.AntiForgeryToken()
+            <input type="hidden" name="id" value="item.id" />
+        }
+    }
 </p>
+
+
+

@@ -24,6 +24,7 @@ namespace TimeOff.Models
         public DateTime DataNasc { get; set; }
 
         [Required]
+        [DataType(DataType.Text)]
         public String Biografia { get; set; }
 
         [Required]

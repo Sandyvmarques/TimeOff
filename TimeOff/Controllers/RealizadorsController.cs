@@ -48,18 +48,19 @@ namespace TimeOff.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        [Authorize(Roles = "Admin")] 
-        public ActionResult Create([Bind(Include = "Id,NomeRealizador,DataNasc,Biografia,ImagemRealizador")] Realizador realizador, HttpPostedFileBase ImagemRealizador)
+        [Authorize(Roles = "Admin")]
+        public ActionResult Create([Bind(Include = "Id,NomeRealizador,DataNasc,Biografia,ImagemRealizador")] Realizador realizador, HttpPostedFileBase ImagemRealizadr)
         {
-            if (ImagemRealizador != null)
+            if (ImagemRealizadr != null)
             {
-                realizador.ImagemRealizador = ImagemRealizador.FileName;
+                realizador.ImagemRealizador = Path.GetExtension(ImagemRealizadr.FileName);
             }
             if (ModelState.IsValid)
             {
                 db.Realizador.Add(realizador);
                 db.SaveChanges();
-                ImagemRealizador.SaveAs(Path.Combine(Server.MapPath("~/Imagens/" + ImagemRealizador.FileName)));
+                ImagemRealizadr.SaveAs(Path.Combine(Server.MapPath("~/ImagensRealizador/" + realizador.Id + realizador.ImagemRealizador)));
+
                 return RedirectToAction("Index");
             }
 
@@ -88,11 +89,21 @@ namespace TimeOff.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         [Authorize(Roles = "Admin")]
-        public ActionResult Edit([Bind(Include = "Id,Nome,DataNasc,Biografia,ImagemRealizador")] Realizador realizador)
+        public ActionResult Edit([Bind(Include = "Id,NomeRealizador,DataNasc,Biografia,ImagemRealizador")] Realizador realizador, HttpPostedFileBase ImagemRealizadr)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(realizador).State = EntityState.Modified;
+                if (ImagemRealizadr != null)
+                {
+                    if (System.IO.File.Exists(Server.MapPath("~/ImagensRealizador/" + realizador.Id + realizador.ImagemRealizador)))
+                    {
+                        System.IO.File.Delete(Server.MapPath("~/ImagensRealizador/" + realizador.Id + realizador.ImagemRealizador));
+                    }
+                    realizador.ImagemRealizador = Path.GetExtension(ImagemRealizadr.FileName);
+                    db.Entry(realizador).State = EntityState.Modified;
+                    ImagemRealizadr.SaveAs(Path.Combine(Server.MapPath("~/ImagensRealizador/" + realizador.Id + realizador.ImagemRealizador)));
+
+                }
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
