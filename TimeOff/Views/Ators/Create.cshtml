@@ -3,14 +3,18 @@
 @{
     ViewBag.Title = "Create";
 }
+@*Vai buscar o css*@
+@section Styles {
+    @Styles.Render("~/Content/TimeOff.css")
+}
 
 <h2>Criar novos atores</h2>
 
 
-@using (Html.BeginForm()) 
+@using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
-    
+
     <div class="form-horizontal">
         <h4>Ator</h4>
         <hr />

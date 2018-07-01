@@ -14,7 +14,6 @@
     }
 </style>
 
-
 <div class="prim">
     @foreach (var item in Model)
     {
@@ -33,7 +32,16 @@
 <p>
     @if (User.IsInRole("Admin"))
     {
-        @Html.ActionLink("Criar Novo Filme", "Create", null, new { @class = "btn btn-primary btn-large" })<br /> {
+        //Botões uteis para o Admin
+        @Html.ActionLink("Criar Novo Filme", "Create", null, new { @class = "btn btn-default btn-large" })
+        @Html.ActionLink("Criar Novo Realizador", "Create", "Realizadors", null, new { @class = "btn btn-default btn-large" })
+        @Html.ActionLink("Criar Novo Ator", "Create", "Ators", null, new { @class = "btn btn-default btn-large" })
+        @Html.ActionLink("Criar Nova Categoria", "Create", "Categorias", null, new { @class = "btn btn-default btn-large" })
+        <br />
+        @Html.ActionLink("Categorias", "Index", "Categorias", null, new { @class = "btn btn-default btn-large" })
+        @Html.ActionLink("Ator", "Index", "Ators", null, new { @class = "btn btn-default btn-large" })
+        @Html.ActionLink("Realizadores", "Index", "Realizadors", null, new { @class = "btn btn-default btn-large" })
+        {
             @Html.AntiForgeryToken()
             <input type="hidden" name="id" value="item.id" />
         }

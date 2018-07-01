@@ -1,14 +1,18 @@
 ﻿@using TimeOff.Models
 @model LoginViewModel
-    @{
-        ViewBag.Title = "Iniciar Sessão";
-    }
+@{
+    ViewBag.Title = "Iniciar Sessão";
+}
+@*Vai buscar o css*@
+@section Styles {
 
-    <h2 style="color:brown; font-size:25px;">@ViewBag.Title</h2><br />
-    <div class="row">
-        @*estilo email*@
-        <div class="col-md-6">
-            @using (Html.BeginForm("Login", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+    @Styles.Render("~/Content/TimeOff.css")
+}
+<h2 style="color:brown; font-size:25px;">@ViewBag.Title</h2><br />
+<div class="row">
+    @*estilo email*@
+    <div class="col-md-6">
+        @using (Html.BeginForm("Login", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
         {
             @Html.AntiForgeryToken()
             <section id="loginForm">
@@ -52,9 +56,9 @@
                     @Html.ActionLink("Registar Novo Utilizador", "Register") | @Html.ActionLink("Esqueceu-se da Senha?", "ForgotPassword")
                 </div>
             </section>
-    }
-        </div>
+        }
     </div>
-    @section Scripts {
-        @Scripts.Render("~/bundles/jqueryval")
-    }
+</div>
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

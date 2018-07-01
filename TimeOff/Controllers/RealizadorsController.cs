@@ -59,6 +59,7 @@ namespace TimeOff.Controllers
             {
                 db.Realizador.Add(realizador);
                 db.SaveChanges();
+                //A Imagem irá de ter o nome do Id do Realizador 
                 ImagemRealizadr.SaveAs(Path.Combine(Server.MapPath("~/ImagensRealizador/" + realizador.Id + realizador.ImagemRealizador)));
 
                 return RedirectToAction("Index");
@@ -92,7 +93,7 @@ namespace TimeOff.Controllers
         public ActionResult Edit([Bind(Include = "Id,NomeRealizador,DataNasc,Biografia,ImagemRealizador")] Realizador realizador, HttpPostedFileBase ImagemRealizadr)
         {
             if (ModelState.IsValid)
-            {
+            {   //Se adicionar outra foto irá apagar a antiga e adicionar a nova adicionada
                 if (ImagemRealizadr != null)
                 {
                     if (System.IO.File.Exists(Server.MapPath("~/ImagensRealizador/" + realizador.Id + realizador.ImagemRealizador)))

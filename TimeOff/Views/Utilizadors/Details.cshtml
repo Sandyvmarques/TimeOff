@@ -3,8 +3,12 @@
 @{
     ViewBag.Title = "Details";
 }
+@*Vai buscar o css*@
+@section Styles {
 
-<h2>Details</h2>
+    @Styles.Render("~/Content/TimeOff.css")
+}
+<h2>Detalhes</h2>
 
 <div>
     <h4>Utilizador</h4>

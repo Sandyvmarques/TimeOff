@@ -3,6 +3,10 @@
 @{
     ViewBag.Title = "Index";
 }
+@*Vai buscar o css*@
+@section Styles {
+    @Styles.Render("~/Content/TimeOff.css")
+}
 
 <h2>Index</h2>
 
@@ -26,26 +30,27 @@
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Filmes.Titulo)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Utilizadores.NomeCompleto)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Texto)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Data)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
-            @Html.ActionLink("Details", "Details", new { id=item.Id }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
-        </td>
-    </tr>
-}
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Filmes.Titulo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Utilizadores.NomeCompleto)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Texto)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Data)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
+                @Html.ActionLink("Details", "Details", new { id = item.Id }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+            </td>
+        </tr>
+    }
 
 </table>

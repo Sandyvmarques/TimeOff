@@ -4,13 +4,17 @@
     ViewBag.Title = "Edit";
 }
 
-<h2>Edit</h2>
+@*Vai buscar o css*@
+@section Styles {
+    @Styles.Render("~/Content/TimeOff.css")
+}
+<h2>Editar</h2>
 
 
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
-    
+
     <div class="form-horizontal">
         <h4>Categorias</h4>
         <hr />

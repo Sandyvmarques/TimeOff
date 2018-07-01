@@ -16,6 +16,7 @@ namespace TimeOff.Models
         [Key]
         public int Id { get; set; }
 
+        //Nome do ator obrigatória 
         [Required]
         public string Nome { get; set; }
 

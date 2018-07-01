@@ -21,7 +21,7 @@
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         @*Criar Titulo do Filme*@
         <div class="form-group">
-            @Html.LabelFor(model => model.Titulo, htmlAttributes: new { @class = "control-label col-md-2" })
+            <label class="control-label col-md-2"> Titulo:</label>
             <div class="col-md-10">
                 @Html.EditorFor(model => model.Titulo, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.Titulo, "", new { @class = "text-danger" })
@@ -29,7 +29,7 @@
         </div>
         @*Criar Sinopse do Filme*@
         <div class="form-group">
-            @Html.LabelFor(model => model.Sinopse, htmlAttributes: new { @class = "control-label col-md-2" })
+            <label class="control-label col-md-2"> Sinopse:</label>
             <div class="col-md-10">
                 @Html.EditorFor(model => model.Sinopse, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.Sinopse, "", new { @class = "text-danger" })
@@ -37,7 +37,7 @@
         </div>
         @*Criar Ano de Lançamento do Filme*@
         <div class="form-group">
-            @Html.LabelFor(model => model.AnoLanc, htmlAttributes: new { @class = "control-label col-md-2" })
+            <label class="control-label col-md-2"> Ano Lançamento:</label>
             <div class="col-md-10">
                 @Html.EditorFor(model => model.AnoLanc, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.AnoLanc, "", new { @class = "text-danger" })
@@ -45,7 +45,7 @@
         </div>
         @*Adicionar Link do Youtube respetivamente ao filme*@
         <div class="form-group">
-            @Html.LabelFor(model => model.LinkTrailer, htmlAttributes: new { @class = "control-label col-md-2" })
+            <label class="control-label col-md-2"> Link do Youtube:</label>
             <div class="col-md-10">
                 @Html.EditorFor(model => model.LinkTrailer, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.LinkTrailer, "", new { @class = "text-danger" })
@@ -53,7 +53,7 @@
         </div>
         @*Inserir a Imagem de Capa do Filme*@
         <div class="form-group">
-            @Html.LabelFor(model => model.ImagensFilme, htmlAttributes: new { @class = "control-label col-md-2" })
+            <label class="control-label col-md-2"> Imagem da capa do Filme:</label>
             <div class="col-md-10">
                 @* adição do objeto para fazer o file upload de uma fotografia *@
                 <input type="file" name="ImagensFilme"
@@ -61,36 +61,33 @@
                 @Html.ValidationMessageFor(model => model.ImagensFilme, "", new { @class = "text-danger" })
             </div>
         </div>
-        @*Para escolher o Realizador do Filme*@
+        @*Escolher o Realizador do Filme*@
         <div class="form-group">
-            @Html.LabelFor(model => model.RealizadorId, htmlAttributes: new { @class = "control-label col-md-3" })
-            <div class="col-md-12">
+            <label class="control-label col-md-2"> Realizador do Filme:</label>
+            <div class="col-md-10">
                 @Html.DropDownList("RealizadorId", null, htmlAttributes: new { @class = "form-control" })
                 @Html.ValidationMessageFor(model => model.RealizadorId, "", new { @class = "text-danger" })
             </div>
         </div>
-        @*Para escolher as categorias dos Filmes*@
+        @*Lista de categorias dos Filmes*@
         <div class="form-group">
-            @Html.LabelFor(model => model.Categorias, htmlAttributes: new { @class = "control-label col-md-3" })
-            <div class="col-md-12">
+            <label class="control-label col-md-2"> Categorias do Filme:</label>
+            <div class="col-md-10">
                 @Html.DropDownList("Categorias", null, htmlAttributes: new { @class = "form-control", Multiple = "multiple" })
                 @Html.ValidationMessageFor(model => model.Categorias, "", new { @class = "text-danger" })
             </div>
         </div>
-        @*lista de atores*@
-
+        @*Lista de atores dos Filmes *@
         <div class="form-group">
-            @Html.LabelFor(model => model.Atores, htmlAttributes: new { @class = "control-label col-md-3" })
-            <div class="col-md-12">
+            <label class="control-label col-md-2"> Atores do Filme:</label>
+            <div class="col-md-10">
                 @Html.DropDownList("Atores", null, htmlAttributes: new { @class = "form-control", Multiple = "multiple" })
                 @Html.ValidationMessageFor(model => model.Atores, "", new { @class = "text-danger" })
             </div>
         </div>
-
-
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Create" class="btn btn-success" />
+                <input type="submit" value="Criar Filme" class="btn btn-success" />
             </div>
         </div>
     </div>

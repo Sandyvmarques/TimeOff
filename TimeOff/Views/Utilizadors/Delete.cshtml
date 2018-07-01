@@ -2,9 +2,15 @@
 
 @{
     ViewBag.Title = "Delete";
+
+}
+@*Vai buscar o css*@
+@section Styles {
+
+    @Styles.Render("~/Content/TimeOff.css")
 }
 
-<h2>Delete</h2>
+<h2>Apagar</h2>
 
 <h3>Tens a certeza que queres apagar isto?</q></h3>
 <div>
@@ -45,7 +51,8 @@
 
     </dl>
 
-    @using (Html.BeginForm()) {
+    @using (Html.BeginForm())
+    {
         @Html.AntiForgeryToken()
 
         <div class="form-actions no-color">

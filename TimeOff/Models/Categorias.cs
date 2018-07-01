@@ -16,6 +16,7 @@ namespace TimeOff.Models
         [Key]
         public int Id { get; set; }
 
+        //Nome da categoria obrigatória 
         [Required]
         public string Nome { get; set; }
 

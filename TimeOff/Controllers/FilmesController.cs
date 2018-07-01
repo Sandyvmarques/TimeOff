@@ -60,31 +60,32 @@ namespace TimeOff.Controllers
                 filme.ImagensFilme = Path.GetExtension(ImagensFilme.FileName);
             }
 
-            if (Atores == null )
+            if (Atores == null)
             {
-                Atores= new List<int>();
+                Atores = new List<int>();
+
             }
-            else if( Categorias == null)
+            else if (Categorias == null)
             {
                 Categorias = new List<int>();
-            }else
+            }
+            else
             if (ModelState.IsValid)
             {
                 db.Filme.Add(filme);
-                //Adicionar categorias aos filmes
+                //Para adicionar Lista de categorias aos filmes
                 IQueryable<Categorias> temp2 = db.Categorias.Where(a => Categorias.Any(aa => a.Id == aa));
                 filme.Categorias = temp2.ToList();
 
-                //lista dos atores 
+                //Para adicionar lista dos atores 
                 IQueryable<Ator> temp3 = db.Ators.Where(a => Atores.Any(aa => a.Id == aa));
                 filme.Atores = temp3.ToList();
                 db.SaveChanges();
 
-                //Adiciona uma imagem ao Filme
+                //Para adiciona uma imagem ao Filme
                 ImagensFilme.SaveAs(Path.Combine(Server.MapPath("~/Imagens/" + filme.Id + filme.ImagensFilme)));
                 return RedirectToAction("Index");
-            }
-            //Adicionar Realizador 
+            } 
             ViewBag.sel_Categorias = Categorias.ToList();
             ViewBag.sel_Atores = Atores.ToList();
             ViewBag.Categorias = new SelectList(db.Categorias, "Id", "Nome");
@@ -135,18 +136,15 @@ namespace TimeOff.Controllers
             if (ModelState.IsValid)
             {
                 //lista das categorias dos filmes para Editar 
-                //filme.Categorias.Clear();
                 IQueryable<Categorias> temp2 = db.Categorias.Where(a => Categorias.Any(aa => a.Id == aa));
                 filme.Categorias = temp2.ToList();
 
-
-                //lista dos atores 
-                //filme.Atores.Clear();
+                //lista dos atores para editar
                 IQueryable<Ator> temp3 = db.Ators.Where(a => Atores.Any(aa => a.Id == aa));
                 filme.Atores = temp3.ToList();
                 db.Entry(filme).State = EntityState.Modified;
 
-                //Escolher imagem dos Filmes
+                //Editar Imagem
                 if (ImagemFilme != null)
                 {
                     if (System.IO.File.Exists(Server.MapPath("~/Imagens/" + filme.Id + filme.ImagensFilme)))
@@ -155,7 +153,7 @@ namespace TimeOff.Controllers
                     }
                     filme.ImagensFilme = Path.GetExtension(ImagemFilme.FileName);
                     ImagemFilme.SaveAs(Path.Combine(Server.MapPath("~/Imagens/" + filme.Id + filme.ImagensFilme)));
-                    
+
                 }
 
                 db.SaveChanges();

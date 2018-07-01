@@ -34,8 +34,9 @@
             <p style="font-family:Arial; font-weight:bold; color:black; font-size:18px;">
                 @foreach (var cat in Model.Categorias)
                 {@Html.DisplayFor(a => cat.Nome);
-                if (!cat.Equals(Model.Categorias.Last())) {<text>, </text>} 
-                }
+                if (!cat.Equals(Model.Categorias.Last()))
+                {<text>, </text>}
+        }
             </p>
         </div>
         @*nome do Realizador do Filme*@
@@ -70,12 +71,12 @@
 </div>
 <div class="row">
     <div class="col-md-1">
-        @*id do utilizador, mas quero Foto*@
+        @*Foto do Utilizador*@
         @foreach (var foto in Model.Comentarios)
         {
             <div class="row">
                 <div class="col-md-12" style="background-color:lightgray; text-align:center; font-family:Arial; height:100px;margin-top:15px;">
-                    <img src="~/Imagens/@Html.DisplayFor(a => foto.Utilizadores.ImagemUtilizador)"/>
+                    <img src="~/Imagens/@Html.DisplayFor(a => foto.Utilizadores.ImagemUtilizador)" />
                 </div>
             </div>
         }
@@ -95,7 +96,7 @@
                         <b>@Html.DisplayFor(a => foto.Texto)</b>
                     </div>
                     @*Data do comentário*@
-                    <div style="padding-top:45px; text-align:right;">
+                    <div style="padding-top:35px; text-align:right;">
                         @Html.DisplayFor(a => foto.Data)
                     </div>
                 </div>
@@ -104,23 +105,17 @@
     </div>
 </div>
 
-
-@*ato de comentar*@
-
-
-
 @if (User.IsInRole("Admin"))
 {
-<p>
-    @Html.ActionLink("Editar", "Edit", new { id = Model.Id }) |
-    @Html.ActionLink("Voltar para a Lista", "Index")
-    @using (Html.BeginForm("Delete", "Filmes", null, FormMethod.Post, null))
-    {
-        @*Só aparece para o Admin da página*@
-        @Html.AntiForgeryToken()
-        <input type="hidden" name="id" value="@Model.Id" />
-        <button class="btn btn-danger" type="submit">Apagar</button>
-    }
-
-</p>
+    <p>
+        @Html.ActionLink("Editar", "Edit", new { id = Model.Id }) |
+        @Html.ActionLink("Voltar para a Lista", "Index")
+        @using (Html.BeginForm("Delete", "Filmes", null, FormMethod.Post, null))
+        {
+            @*Só aparece para o Admin da página*@
+            @Html.AntiForgeryToken()
+            <input type="hidden" name="id" value="@Model.Id" />
+            <button class="btn btn-danger" type="submit">Apagar</button>
+        }
+    </p>
 }

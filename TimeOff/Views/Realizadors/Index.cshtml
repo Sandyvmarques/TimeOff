@@ -17,16 +17,17 @@
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.NomeRealizador)
+            <label class="control-label col-md-2"> Nome:</label>
+
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.DataNasc)
+            <label class="control-label col-md-2"> Data de Nascimento:</label>
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Biografia)
+            <label class="control-label col-md-2"> Biografia:</label>
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.ImagemRealizador)
+            <label class="control-label col-md-2"> Imagens do Realizador:</label>
         </th>
         <th></th>
     </tr>
@@ -44,14 +45,14 @@
                 @Html.DisplayFor(modelItem => item.Biografia)
             </td>
             <td>
-                <a href="~/imagensRealizador/@item.Id@item.ImagemRealizador" target="_blank">
-                    <img src="~/imagensRealizador/@item.Id@item.ImagemRealizador" width="150" height="200" />
+                <a href="~/ImagensRealizadores/@item.Id@item.ImagemRealizador" target="_blank">
+                    <img src="~/ImagensRealizadores/@item.Id@item.ImagemRealizador" width="150" height="200" />
                 </a>
             </td>
             <td>
-                @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
-                @Html.ActionLink("Details", "Details", new { id = item.Id }) |
-                @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+                @Html.ActionLink("Editar", "Edit", new { id = item.Id }) |
+                @Html.ActionLink("Detalhes", "Details", new { id = item.Id }) |
+                @Html.ActionLink("Apagar", "Delete", new { id = item.Id })
             </td>
         </tr>
     }
